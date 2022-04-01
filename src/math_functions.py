@@ -24,6 +24,9 @@ def exponentiate(base, exponent):
     """Returns power of base and exponent
     \n(base ** exponent)"""
     pass
+    if exponent < 0:
+        raise ValueError("Exponent lower than 0")
+    return (base ** exponent)
 
 def nthroot(base, radicand):
     """Returns nth root of base and radicand
@@ -35,9 +38,23 @@ def factorial(number):
     """Returns factorial of number
     \n(number!)
     \nAny factorial from number < 0 prints error on stderr"""
+    if type(number) != int:
+        raise ValueError("Integer number expected")
+    if number < 0:
+        raise ValueError("Factorial exists for positive numbers only")
+    if number == 0:
+        return 1
+
+    if number == 1:
+        return number
+    return number*factorial(number-1)
     pass
 
 def absolute(number):
     """Returns absolute value of number
     \n(|number|)"""
+    if number < 0:
+        return -number
+    if number >= number:
+        return number
     pass
