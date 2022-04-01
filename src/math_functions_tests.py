@@ -37,7 +37,6 @@ class test_calc(unittest.TestCase):
         self.assertEqual(calculator.exponentiate(-4,2),16)
         self.assertEqual(calculator.exponentiate(-4,3),-64)
         self.assertEqual(calculator.exponentiate(100,0),1)
-        self.assertRaises(calculator.exponentiate(2,-3),1/(2**3))
         self.assertEqual(calculator.exponentiate(0.25,1.5),0.25**1.5)
 
     def test_nthroot(self):
@@ -56,6 +55,12 @@ class test_calc(unittest.TestCase):
         self.assertEqual(calculator.factorial(0),1)
         self.assertRaises(ValueError,calculator.factorial, 5.1)
 
+    def test_absolute(self):
+        self.assertEqual(calculator.absolute(10),10)
+        self.assertEqual(calculator.absolute(-50),50)
+        self.assertEqual(calculator.absolute(0),0)
+        self.assertEqual(calculator.absolute(3.14),3.14)
+        self.assertEqual(calculator.absolute(-11.5),11.5)
 
 
 if __name__ == '__main__':
