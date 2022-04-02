@@ -2,23 +2,25 @@
 def addition(addend1, addend2):
     """Returns addition of addend1 and addend2
     \n(addend1 + addend2)"""
-    pass
+    return addend1 + addend2
 
 def subtract(minuend, subtrahend):
     """Returns subtraction of minuend and subtrahend
     \n(minuend - subtrahend)"""
-    pass
+    return minuend - subtrahend
 
 def multiply(multiplicand, multiplayer):
     """Returns multiplication of multiplicand and multiplayer
     \n(multiplicand * multiplayer)"""
-    pass
+    return multiplicand * multiplayer
 
 def divide(divident, divisor):
     """Returns division of divident and divisor
     \n(divident / divisor)
     \nDivisien by zero prints error on stderr"""
-    pass
+    if (divisor == 0):
+        raise ValueError("Division by zero is not defined")
+    return divident / divisor    
 
 def exponentiate(base, exponent):
     """Returns power of base and exponent
@@ -31,6 +33,11 @@ def nthroot(base, radicand):
     """Returns nth root of base and radicand
     \n(base ** (1/radicand))
     \nAny root from base < 0 prints error on stderr"""
+    if (base < 0):
+        raise ValueError("Base is lower than 0")
+    if (radicand <= 0):
+        raise ValueError("Radicand is lower or equal 0 ")
+    return (base ** (1/radicand))
 
 def factorial(number):
     """Returns factorial of number
