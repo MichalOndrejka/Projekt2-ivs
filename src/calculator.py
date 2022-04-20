@@ -44,8 +44,8 @@ def handle_symbol(symbol):
             elif buttons[index][3] == clear_operands:
                 clear_operands()
             else:
+                operation = buttons[index][3]
                 if operand2 != None:
-                    operation = buttons[index][3]
                     operand1 = operand2
                     operand2 = None
                     display_content = default_display_value
