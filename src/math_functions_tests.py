@@ -14,14 +14,14 @@ class test_calc(unittest.TestCase):
         self.assertEqual(calculator.subtract(0,0),0)
         self.assertEqual(calculator.subtract(-5,8),-13)
         self.assertEqual(calculator.subtract(-1,-1),0)
-        self.assertEqual(calculator.addition(1.5,0.25),1.25)
+        self.assertEqual(calculator.subtract(1.5,0.25),1.25)
     
     def test_multiply(self):
         self.assertEqual(calculator.multiply(2,15),30)
         self.assertEqual(calculator.multiply(0,8),0)
         self.assertEqual(calculator.multiply(-1,2),-2)
         self.assertEqual(calculator.multiply(-10,-10),100)
-        self.assertEqual(calculator.addition(1.5,0.25),0.3125)
+        self.assertEqual(calculator.multiply(1.5,0.25),0.375)
     
     def test_divide(self):
         self.assertEqual(calculator.divide(100,20),5)
@@ -29,7 +29,7 @@ class test_calc(unittest.TestCase):
         self.assertEqual(calculator.divide(-10,-2),5)
         self.assertEqual(calculator.divide(9,-3),-3)
         self.assertRaises(ValueError,calculator.divide, 5,0)
-        self.assertEqual(calculator.addition(1.5,0.25),6)
+        self.assertEqual(calculator.divide(1.5,0.25),6)
 
     def test_exponentiate(self):
         self.assertEqual(calculator.exponentiate(10,2),100)
