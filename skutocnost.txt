@@ -1,2 +1,3 @@
 [PLAN] -- [REALITA]
 Rovnomerné rozloženie projektu -- Nerovnomrené rozloženie
+Všetky časti projektu rozdelené -- Neskôr sme prišli na nové funkcie, algoritmy, ...

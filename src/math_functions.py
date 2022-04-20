@@ -29,7 +29,7 @@ def exponentiate(base, exponent):
         raise ValueError("Exponent lower than 0")
     return (base ** exponent)
 
-def nthroot(base, radicand):
+def nthroot(radicand, base):
     """Returns nth root of base and radicand
     \n(base ** (1/radicand))
     \nAny root from base < 0 prints error on stderr"""
