@@ -25,6 +25,8 @@ def display_add(clear, value):
     if clear == True or display_content == default_display_value:
         display_content = ""
     display_content += value
+    if len(display_content) >= max_display_length:
+        display_content = "Error"
     canvas.delete("displayed")
     canvas.create_text(390, 55,text = display_content,font="Times 25", anchor="e", tag = "displayed")
 
@@ -42,10 +44,11 @@ def handle_symbol(symbol):
             elif buttons[index][3] == clear_operands:
                 clear_operands()
             else:
-                operation = buttons[index][3]
-                operand1 = operand2
-                operand2 = None
-                display_content = default_display_value
+                if operand2 != None:
+                    operation = buttons[index][3]
+                    operand1 = operand2
+                    operand2 = None
+                    display_content = default_display_value
 
 def mouse_clicked(event):
     x = (event.x - 5*2) // 100
@@ -71,8 +74,6 @@ def gui_ctor():
     canvas_height = 615
     canvas = tkinter.Canvas(width = canvas_width, height = canvas_height, background='lightblue')
     canvas.pack()
-
-    binds()
 
     outline_width = 2
     display = (5,10,405,100)
@@ -131,11 +132,12 @@ def calculate(operation, operand1, operand2):
 
 def equals():
     global operand1, operand2, operation
-    result = str(calculate(operation, operand1, operand2))
+    result = calculate(operation, operand1, operand2)
     if result != None:
-        display_add(True, result)
-    operand2 = result
-    operand1 = None
+        display_add(True, str(result))
+    if operand1 != None:
+        operand2 = result
+        operand1 = None
 
 def clear_operands():
     global operand1, operand2, operation
@@ -145,5 +147,6 @@ def clear_operands():
     display_add(True, default_display_value)
 
 gui_ctor()
+binds()
 
 canvas.mainloop()
