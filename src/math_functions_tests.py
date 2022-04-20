@@ -1,5 +1,5 @@
 import unittest
-import calculator
+import math_functions as calculator
 
 class test_calc(unittest.TestCase):
     def test_addition(self):
@@ -40,13 +40,13 @@ class test_calc(unittest.TestCase):
         self.assertEqual(calculator.exponentiate(0.25,1.5),0.25**1.5)
 
     def test_nthroot(self):
-        self.assertEqual(calculator.nthroot(100,2),10)
-        self.assertEqual(calculator.nthroot(64,3),4)
-        self.assertRaises(ValueError,calculator.nthroot, -4,2)
-        self.assertEqual(calculator.nthroot(-8,3),-2)
-        self.assertEqual(calculator.nthroot(0,2),0)
-        self.assertEqual(calculator.nthroot(70.5,2),70.5**(1/2))
-        self.assertEqual(calculator.exponentiate(1.75,1.5),1.75**1.5)
+        self.assertEqual(calculator.nthroot(2,100),10)
+        self.assertEqual(calculator.nthroot(3,64),4)
+        self.assertRaises(ValueError,calculator.nthroot, 2,-4)
+        self.assertEqual(calculator.nthroot(3,8),-2)
+        self.assertEqual(calculator.nthroot(2,0),0)
+        self.assertEqual(calculator.nthroot(2,70.5),70.5**(1/2))
+
 
     def test_factorial(self):
         self.assertEqual(calculator.factorial(7),5040)
