@@ -43,7 +43,7 @@ class test_calc(unittest.TestCase):
         self.assertEqual(calculator.nthroot(2,100),10)
         self.assertEqual(calculator.nthroot(3,64),4)
         self.assertRaises(ValueError,calculator.nthroot, 2,-4)
-        self.assertEqual(calculator.nthroot(3,8),-2)
+        self.assertEqual(calculator.nthroot(3,8),2)
         self.assertEqual(calculator.nthroot(2,0),0)
         self.assertEqual(calculator.nthroot(2,70.5),70.5**(1/2))
 
