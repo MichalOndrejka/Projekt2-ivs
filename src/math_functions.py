@@ -37,7 +37,8 @@ def nthroot(radicand, base):
         raise ValueError("Base is lower than 0")
     if (radicand <= 0):
         raise ValueError("Radicand is lower or equal 0 ")
-    return (base ** (1/radicand))
+    #Result must be one decimal place shorter, so exponent could be periodic.
+    return round((base ** (1/radicand)),15)  
 
 def factorial(number):
     """Returns factorial of number
