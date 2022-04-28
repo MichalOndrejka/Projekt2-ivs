@@ -1,9 +1,12 @@
+from operator import truediv
+from re import A
 from math_functions import *
 import tkinter
 
 default_display_value = "0.0"
 display_content = default_display_value
 max_display_length = 21
+answer_displayed = False
 operation  = None
 operand1 = None
 operand2 = default_display_value
@@ -20,21 +23,26 @@ def is_number(symbol):
             return True
     return False
 
-def display_add(clear, value):
+def display_add(clear, digit):
     global display_content
+
     if clear == True or display_content == default_display_value:
         display_content = ""
-    display_content += value
+    display_content += digit
     if len(display_content) >= max_display_length:
         display_content = "Error"
     canvas.delete("displayed")
     canvas.create_text(390, 55,text = display_content,font="Times 25", anchor="e", tag = "displayed")
 
 def handle_symbol(symbol):
-    global display_content, operand1, operand2, operation
+    global display_content, operation, operand1, operand2, answer_displayed
 
     if is_number(symbol) and len(display_content) <= max_display_length:
-        display_add(False, symbol)
+        if answer_displayed == False:
+            display_add(False, symbol)
+        else:
+            display_add(True, symbol)
+            answer_displayed = False
         operand2 = display_content
     else:
         index = find_value_in_nested_array(symbol, buttons)
@@ -52,8 +60,8 @@ def handle_symbol(symbol):
 
 def mouse_clicked(event):
     x = (event.x - 5*2) // 100
-    y = (event.y - 2*10 - 90) // 100
-    index = x + 4 * y
+    y = (event.y - 10*2 - 90) // 100
+    index = x + (4 * y)
     if 0 <= index and index <= 19:
         handle_symbol(buttons[index][1])
 
@@ -108,7 +116,9 @@ def gui_ctor():
     for button in buttons:
         coordinations = button[0]
         button_color = button[2]
+
         canvas.create_rectangle(coordinations, fill = button_color, width = outline_width, outline = 'black')
+
         text_x = (coordinations[0]+coordinations[2])//2
         text_y = (coordinations[1]+coordinations[3])//2
         button_text = button[1]
@@ -117,30 +127,36 @@ def gui_ctor():
     display_add(True, default_display_value)
 
 def calculate(operation, operand1, operand2):
+    result = None
+
     if operand1 != None:
         operand1 = float(operand1)
     if operand2 != None:
         operand2 = float(operand2)
-    result = None
+    
     if operation != absolute and operation != factorial:
         if operand1 != None and operand2 != None:
             result = operation(operand1, operand2)
     else:
         if operand1 != None:
-            result = operation(int(operand1))
+            result = operation(int(operand1)) #? int
+    
     return result
 
 def equals():
-    global operand1, operand2, operation
+    global operation, operand1, operand2, answer_displayed
+
     result = calculate(operation, operand1, operand2)
     if result != None:
         display_add(True, str(result))
+        answer_displayed = True
     if operand1 != None:
         operand2 = result
         operand1 = None
 
 def clear_operands():
     global operand1, operand2, operation
+
     operand1 = None
     operand2 = None
     operation = None
