@@ -2,17 +2,17 @@
 def addition(addend1, addend2):
     """Returns addition of addend1 and addend2
     \n(addend1 + addend2)"""
-    return addend1 + addend2
+    return float(addend1 + addend2)
 
 def subtract(minuend, subtrahend):
     """Returns subtraction of minuend and subtrahend
     \n(minuend - subtrahend)"""
-    return minuend - subtrahend
+    return float(minuend - subtrahend)
 
 def multiply(multiplicand, multiplayer):
     """Returns multiplication of multiplicand and multiplayer
     \n(multiplicand * multiplayer)"""
-    return multiplicand * multiplayer
+    return float(multiplicand * multiplayer)
 
 def divide(divident, divisor):
     """Returns division of divident and divisor
@@ -20,14 +20,14 @@ def divide(divident, divisor):
     \nDivisien by zero prints error on stderr"""
     if (divisor == 0):
         raise ValueError("Division by zero is not defined")
-    return divident / divisor    
+    return float(divident / divisor)    
 
 def exponentiate(base, exponent):
     """Returns power of base and exponent
     \n(base ** exponent)"""
     if exponent < 0:
         raise ValueError("Exponent lower than 0")
-    return (base ** exponent)
+    return float(base ** exponent)
 
 def nthroot(radicand, base):
     """Returns nth root of base and radicand
@@ -38,13 +38,13 @@ def nthroot(radicand, base):
     if (radicand <= 0):
         raise ValueError("Radicand is lower or equal 0 ")
     #Result must be one decimal place shorter, so exponent could be periodic.
-    return round((base ** (1/radicand)),15)  
+    return float(round((base ** (1/radicand)),15))
 
 def factorial(number):
     """Returns factorial of number
     \n(number!)
     \nAny factorial from number < 0 prints error on stderr"""
-    if type(number) != int:
+    if float(number) % 1 != 0:
         raise ValueError("Integer number expected")
     if number < 0:
         raise ValueError("Factorial exists for positive numbers only")
@@ -53,12 +53,12 @@ def factorial(number):
 
     if number == 1:
         return number
-    return number*factorial(number-1)
+    return float(number*factorial(number-1))
 
 def absolute(number):
     """Returns absolute value of number
     \n(|number|)"""
     if number < 0:
-        return -number
+        return float(-number)
     if number >= 0:
-        return number
+        return float(number)

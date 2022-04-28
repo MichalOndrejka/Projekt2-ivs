@@ -1,5 +1,3 @@
-from operator import truediv
-from re import A
 from math_functions import *
 import tkinter
 
@@ -66,9 +64,13 @@ def mouse_clicked(event):
         handle_symbol(buttons[index][1])
 
 def key_pressed(event):
-    if event.keysym == "Enter":
+    if event.keysym == "Return":
         handle_symbol("=")
-    else:
+    elif event.keysym == "BackSpace":
+        handle_symbol("C")
+    elif event.char == "/":
+        handle_symbol("÷")
+    elif event.keysym != "equal" and event.char != "C":
         handle_symbol(event.char)
 
 def binds():
@@ -139,7 +141,7 @@ def calculate(operation, operand1, operand2):
             result = operation(operand1, operand2)
     else:
         if operand1 != None:
-            result = operation(int(operand1)) #? int
+            result = operation(operand1)
     
     return result
 
