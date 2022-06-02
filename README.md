@@ -1,12 +1,9 @@
-# Basic 
-Basic calculator
-Prostredi
----------
+# Calculator implementation with basic math functions in Python
+## OS
 
 Windows 64bit
 
-Autori
-------
+## Authors
 
 DvaPalce
 - xondre15 Michal Ondrejka 
@@ -14,7 +11,6 @@ DvaPalce
 - xpodra03 Jirka Podrazil 
 - xbalog05 Lukáš Balog 
 
-Licence
--------
+## License
 
-Tento program je poskytovan s otvorenými zdrojovými textami pod licenciou GNU General Public License v. 3
+This program is provided with open source licenses under the GNU General Public License in. 3
